@@ -20,8 +20,8 @@ import net.dv8tion.jda.api.events.ReadyEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import okhttp3.Authenticator;
 import okhttp3.OkHttpClient;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+//import org.apache.log4j.LogManager;
+//import org.apache.log4j.Logger;
 
 /**
  *
@@ -32,7 +32,7 @@ public class DiscordDiceBot extends ListenerAdapter {
     private JDA jda;
     private boolean respondeToBots;
     
-    private static final Logger LOGGER = LogManager.getLogger(DiscordDiceBot.class.getName());
+   // private static final Logger LOGGER = LogManager.getLogger(DiscordDiceBot.class.getName());
 
     public DiscordDiceBot(String token) throws InterruptedException, LoginException {
         this.jda = new JDABuilder(AccountType.BOT).setToken(token).build();
@@ -78,7 +78,7 @@ public class DiscordDiceBot extends ListenerAdapter {
         
         jda.addEventListener(clientCommand);
         
-        LOGGER.info("Ready to Listen");
+       // LOGGER.info("Ready to Listen");
     }
 
 
