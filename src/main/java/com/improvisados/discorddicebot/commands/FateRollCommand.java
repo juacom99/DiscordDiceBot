@@ -52,7 +52,7 @@ Gson gson = new GsonBuilder().create();
         
         out+=gson.toJson(result).replaceAll("[1|2]", " - ").replaceAll("[3|4]", "  ").replaceAll("[5|6]", " + ");
         
-        if (event.getArgs() != null) {
+        if (event.getArgs() != null && ! event.getArgs().trim().equals("")) {
             out+=event.getArgs();
             total+=Integer.parseInt(event.getArgs());
         }        
@@ -62,13 +62,12 @@ Gson gson = new GsonBuilder().create();
         }
 
         out+=" = "+total;
-        
-        
-        embedBuilder.setAuthor(auth.getName(),"",auth.getAvatarUrl());
-        embedBuilder.setTitle("Fudge Roll for ***"+auth+ "***");
+     
+        //embedBuilder.setAuthor(auth.getName());
+        embedBuilder.setTitle("Fate Roll for ***"+auth.getName()+ "***");
         embedBuilder.setDescription(out);
         embedBuilder.setColor(Color.green);
-        embedBuilder.setThumbnail("https://d20dames.com/favicon.ico");
+        //embedBuilder.setThumbnail("https://d20dames.com/favicon.ico");
         event.reply(embedBuilder.build());
         embedBuilder.clear();
 

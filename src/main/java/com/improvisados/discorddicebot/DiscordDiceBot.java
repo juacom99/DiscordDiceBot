@@ -5,6 +5,7 @@ package com.improvisados.discorddicebot;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import com.improvisados.discorddicebot.commands.FateRollCommand;
 import com.improvisados.discorddicebot.commands.RollCommand;
 import com.improvisados.discorddicebot.configuration.Configuration;
 import com.jagrosh.jdautilities.command.CommandClient;
@@ -72,6 +73,7 @@ public class DiscordDiceBot extends ListenerAdapter {
         builder.setPrefix(prefix);
         builder.setOwnerId(owner);
         builder.addCommands(new RollCommand());
+        builder.addCommand(new FateRollCommand());
         
 
         CommandClient clientCommand = builder.build();

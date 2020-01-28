@@ -48,7 +48,7 @@ public class RollCommand extends Command {
             EmbedBuilder embedBuilder = new EmbedBuilder();
             JsonObject res = gson.fromJson(result, JsonObject.class);
             if (res.get("success").getAsBoolean()) {
-                embedBuilder.setAuthor(auth.getName(),"",auth.getAvatarUrl());
+                embedBuilder.setAuthor(auth.getName());
                 embedBuilder.setTitle("Roll ***" + res.get("expression").getAsString() + "***");
                 embedBuilder.setDescription(res.get("resultText").getAsString() + "=" + res.get("total").getAsString());
                 embedBuilder.setColor(Color.green);
