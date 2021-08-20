@@ -33,9 +33,10 @@ public class RollCommand extends Command {
         dice = new JDiceRoller();
         gson = new GsonBuilder().setPrettyPrinting().create();
         this.name = "roll";
+        this.aliases=new String[]{"r"};
         this.help = "Roll a Dice";
         this.guildOnly = false;
-        super.cooldown=20;
+        super.cooldown=5;
         super.arguments="\\d+[dD]\\d+([+-](\\d+[dD]\\d+|\\d+))*";
     }
 

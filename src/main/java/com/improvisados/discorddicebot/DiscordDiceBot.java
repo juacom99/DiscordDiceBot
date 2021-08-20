@@ -17,6 +17,7 @@ import javax.security.auth.login.LoginException;
 import net.dv8tion.jda.api.AccountType;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
+import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.events.ReadyEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import okhttp3.Authenticator;
@@ -36,9 +37,10 @@ public class DiscordDiceBot extends ListenerAdapter {
    // private static final Logger LOGGER = LogManager.getLogger(DiscordDiceBot.class.getName());
 
     public DiscordDiceBot(String token) throws InterruptedException, LoginException {
-        this.jda = new JDABuilder(AccountType.BOT).setToken(token).build();
+       // this.jda = new JDABuilder(AccountType.BOT).setToken(token).build();
+        this.jda = JDABuilder.createDefault(token).addEventListeners(this).setActivity(Activity.playing("Pathfinder")).build();
         respondeToBots = false;
-        this.jda.addEventListener(this);
+       // this.jda.addEventListener(this);
     }
 
     public DiscordDiceBot(String token, Proxy proxy) throws InterruptedException, LoginException {
@@ -46,10 +48,9 @@ public class DiscordDiceBot extends ListenerAdapter {
         OkHttpClient.Builder builder = new OkHttpClient.Builder().proxy(proxy).proxyAuthenticator(Authenticator.NONE);
 
         OkHttpClient cli = builder.proxy(proxy).proxyAuthenticator(Authenticator.NONE).connectTimeout(60, TimeUnit.SECONDS).writeTimeout(60, TimeUnit.SECONDS).readTimeout(60, TimeUnit.SECONDS).build();
+        this.jda = JDABuilder.createDefault(token).setHttpClientBuilder(builder).setHttpClient(cli).addEventListeners(this).setActivity(Activity.playing("Hustle Castle")).build();
         respondeToBots = false;
-        this.jda = new JDABuilder(AccountType.BOT).setHttpClientBuilder(builder).setHttpClient(cli).setToken(token).build();
-        
-
+       // this.jda = new JDABuilder(AccountType.BOT).setHttpClientBuilder(builder).setHttpClient(cli).setToken(token).build();
     }
     
     
